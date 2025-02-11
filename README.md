@@ -100,15 +100,7 @@
         .footer-logo img {
             height: 40px;
         }
-        @media (max-width: 600px) {
-    .box-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .box {
-        width: 80%;
-    }
-}
+       
 
     </style>
 </head>
