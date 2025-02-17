@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="so">
 <head>
     <meta charset="UTF-8">
@@ -204,5 +204,3 @@
             }
         }
     </script>
-</body>
-</html>
