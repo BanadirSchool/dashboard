@@ -1,206 +1,375 @@
 
-<html lang="so">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CASRI Electronic & STATIONARY</title>
     <link rel="icon" type="image/x-icon" href="casri logo.png">
 
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #ff4d4d;
-            text-align: center;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #b30000;
+            background-color: #d60c0c;
             color: white;
-            padding: 15px;
+            padding: 10px 20px;
         }
-        .logo-left img, .logo-right img {
+
+        header .logo img {
             height: 50px;
         }
-        .box-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 50px 0;
+
+        header .invoice-info {
+            text-align: right;
         }
-        .box {
-            background-color: white;
-            color: #b30000;
+
+        header .invoice-info input {
+            margin-top: 10px;
+            padding: 5px;
+        }
+
+        main {
             padding: 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 18px;
-            width: 150px;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
         }
-        .box img {
-            width: 50px;
-            height: 50px;
-            display: block;
-            margin: 0 auto 10px;
-        }
-        .box:hover {
-            background-color: #b30000;
-            color: white;
-        }
-        .chart-container {
-            width: 80%;
-            margin: 50px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        .input-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .input-box {
-            background: white;
+
+        form input {
+            width: 200px;
             padding: 10px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            margin: 10px;
         }
-        footer {
-            background-color: #800505ce;
+
+        form button {
+            padding: 10px 20px;
+            background-color: red;
             color: white;
-            padding: 15px;
-            position: relative;
-            width: 100%;
-            bottom: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: darkred;
+        }
+
+        .search-container {
             margin-top: 20px;
         }
-        .social {
-            color: white;
-            text-decoration: none;
-            margin: 0 50px;
-            font-weight: bold;
+
+        .search-container input {
+            padding: 10px;
+            width: 300px;
         }
-        .social:hover {
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background: linear-gradient(to right, #f5f5f5, #ffffff);
+            border: 3px solid #3498db; /* Xuduud cad oo ah border */
+            border-radius: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd; /* Xuduud cad oo loogu talagalay th iyo td */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #630b05;
+            color: white;
+        }
+
+        table td {
+            background-color: #fff;
+        }
+
+        table td a {
+            color: red;
+            text-decoration: none;
+        }
+
+        table td a:hover {
             text-decoration: underline;
         }
-        .footer-logo img {
-            height: 40px;
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
-       
+
+        .footer-links img {
+            width: 30px;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+
+        @media print {
+            .delete, .undo, #search, form, header, footer {
+                display: none;
+            }
+
+            body {
+                background-color: white;
+            }
+
+            table {
+                border: 1px solid black; /* Border aad u nadiif ah marka la daabacayo */
+                width: 100%;
+            }
+
+            .table-number {
+                text-align: left;
+                padding-left: 10px;
+            }
+
+            .table-number:before {
+                content: "0";
+            }
+        }
+
+        .undo-button-container {
+            margin-bottom: 20px;
+        }
+
+        .undo-button {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .undo-button:hover {
+            background-color: rgb(117, 3, 28);
+        }
+
+        .table-number {
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .table-number:before {
+            content: "0";
+        }
+        @media (max-width: 500px) {
+    .table {
+        flex-direction: column;
+        align-items: center;
+    }
+    .box {
+        width: 50%;
+    }
+}
 
     </style>
 </head>
 <body>
     <header>
-        <div class="logo-left">
-            <img src="casri logo.png" width="100" height="200px" alt="Casri Electronic Logo">
+        <div class="logo">
+            <img src="casri logo.png" alt="Logo">
         </div>
-        <h1>Casri Electronic</h1>
+        <div class="invoice-info">
+            <h1>CASRI ELECTRONICS & STATIONARY</h1>
+            <label for="invoiceNumber">Invoice No:</label>
+            <input type="text" id="invoiceNumber" placeholder="Soo gali No. Number">
+        </div>
     </header>
 
     <main>
-        <div class="box-container">
-            <a href="file:///C:/Users/Global/Desktop/casri%20form/invoice.html#"target="_blank" class="box"><img src="xog1.png" alt="Diwaan"><p>Diwaan</p></a>
-            <a href="file:///C:/Users/Global/Desktop/casri%20form/deemaha.html"target="_blank" class="box"><img src="deen.png" alt="Deemaha"><p>Deemaha</p></a>
-            <a href="file:///C:/Users/Global/Desktop/casri%20form/chart.html" target="_blank" class="box"><img src="chart.png" alt="Chart"><p>Chart</p></a>
-            
+        <form id="invoiceForm">
+            <input type="text" id="name" placeholder="Custom Name" required>
+            <input type="text" id="item" placeholder="Sheyga (Item)" required>
+            <input type="number" id="qty" placeholder="Qty" required>
+            <input type="number" step="0.01" id="price" placeholder="Price" required>
+            <input type="text" id="amount" placeholder="Amount" disabled>
+            <input type="date" id="date" required>
+            <button type="submit" id="saveButton">Save</button>
+            <button type="button" id="printButton" onclick="printTable()">Print</button>
+        </form>
+
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search by Name or Item" onkeyup="searchTable()">
         </div>
 
-        <div class="input-container">
-            <input type="date" id="date" class="input-box">
-            <input type="number" id="amount" class="input-box" placeholder="Lacagta">
-            <button onclick="updateChart()">Update Chart</button>
+        <div class="undo-button-container">
+            <button id="undoButton" class="undo-button" onclick="undoDelete()">Soo celi wixi ugu danbeye la delete</button>
         </div>
 
-        <div class="chart-container">
-            <h2>Xogta Sanadlaha</h2>
-            <canvas id="myChart"></canvas>
-        </div>
+        <table id="invoiceTable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>M. Macaamisha</th>
+                    <th>Sheyga</th>
+                    <th>Inta Xabo</th>
+                    <th>Qiimaha</th>
+                    <th>Amount</th>
+                    <th>Triikhda</th>
+                    <th>ficilada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data rows will be added here -->
+            </tbody>
+        </table>
     </main>
 
     <footer>
-        <div class="footer-logo">
-            <img src="logo.png" alt="Casri Electronic Logo">
-            <h4> wixii cilad ah naga soo xariir</h4>
-            <p> <b> 252 616299377</b></p>
+        <div class="footer-links">
+            <a href="https://wa.me/1234567890" target="_blank"><img src="whatsapp (1).png" alt="WhatsApp"></a>
+            <a href="https://facebook.com" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+            <a href="mailto:info@casri.com"><img src="email.webp" alt="Email"></a>
         </div>
-        <div>
-            <a href="#" class="social">WhatsApp</a>
-            <a href="#" class="social">Facebook</a>
-            <a href="#" class="social">Twitter</a>
-        </div>
+        <h1>616299377</h1>
     </footer>
 
     <script>
-        const ctx = document.getElementById('myChart').getContext('2d');
-        let myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Lacagta Bisha',
-                    data: [],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(153, 102, 255, 0.6)',
-                        'rgba(255, 159, 64, 0.6)'
-                    ],
-                    borderColor: 'rgba(0, 0, 0, 0.8)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
+        let lastDeletedRow = null;
+
+        document.getElementById('invoiceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const item = document.getElementById('item').value;
+            const qty = parseFloat(document.getElementById('qty').value);
+            const price = parseFloat(document.getElementById('price').value);
+            const amount = qty * price;
+            const date = document.getElementById('date').value;
+
+            const tableBody = document.querySelector('#invoiceTable tbody');
+
+            const row = tableBody.insertRow();
+            row.innerHTML = `
+                <td class="table-number">${tableBody.rows.length < 10 ? '0' : ''}${tableBody.rows.length + 1}</td>
+                <td>${name}</td>
+                <td>${item}</td>
+                <td>${qty}</td>
+                <td>${price}</td>
+                <td>$${amount.toFixed(2)}</td>
+                <td>${date}</td>
+                <td>
+                    <a href="#" class="delete">Delete</a> | <a href="#" class="undo">Undo</a>
+                </td>
+            `;
+
+            saveToLocalStorage();
+
+            document.getElementById('invoiceForm').reset();
+
+            row.querySelector('.delete').addEventListener('click', function() {
+                lastDeletedRow = row;
+                row.remove();
+                document.getElementById('undoButton').style.display = 'block';
+                saveToLocalStorage();
+            });
+
+            row.querySelector('.undo').addEventListener('click', function() {
+                alert('Undo action');
+            });
+        });
+
+        function saveToLocalStorage() {
+            const tableRows = document.querySelectorAll('#invoiceTable tbody tr');
+            const data = [];
+
+            tableRows.forEach(row => {
+                const rowData = {
+                    name: row.cells[1].textContent,
+                    item: row.cells[2].textContent,
+                    qty: row.cells[3].textContent,
+                    price: row.cells[4].textContent,
+                    amount: row.cells[5].textContent,
+                    date: row.cells[6].textContent
+                };
+                data.push(rowData);
+            });
+
+            localStorage.setItem('invoiceData', JSON.stringify(data));
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedData = localStorage.getItem('invoiceData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                const tableBody = document.querySelector('#invoiceTable tbody');
+                data.forEach((rowData, index) => {
+                    const row = tableBody.insertRow();
+                    row.innerHTML = `
+                        <td class="table-number">${index < 9 ? '0' : ''}${index + 1}</td>
+                        <td>${rowData.name}</td>
+                        <td>${rowData.item}</td>
+                        <td>${rowData.qty}</td>
+                        <td>${rowData.price}</td>
+                        <td>${rowData.amount}</td>
+                        <td>${rowData.date}</td>
+                        <td>
+                            <a href="#" class="delete">Delete</a> | <a href="#" class="undo">Undo</a>
+                        </td>
+                    `;
+
+                    row.querySelector('.delete').addEventListener('click', function() {
+                        lastDeletedRow = row;
+                        row.remove();
+                        document.getElementById('undoButton').style.display = 'block';
+                        saveToLocalStorage();
+                    });
+
+                    row.querySelector('.undo').addEventListener('click', function() {
+                        alert('Undo action');
+                    });
+                });
             }
         });
 
-        function updateChart() {
-            let date = document.getElementById('date').value;
-            let amount = document.getElementById('amount').value;
-            if (date && amount) {
-                let month = new Date(date).toLocaleString('so-SO', { month: 'long' });
-                let index = myChart.data.labels.indexOf(month);
-                if (index !== -1) {
-                    myChart.data.datasets[0].data[index] += parseFloat(amount);
-                } else {
-                    myChart.data.labels.push(month);
-                    myChart.data.datasets[0].data.push(parseFloat(amount));
-                }
-                myChart.update();
-
-                // Keydinta xogta localStorage
-                localStorage.setItem('chartData', JSON.stringify(myChart.data));
+        function undoDelete() {
+            if (lastDeletedRow) {
+                const tableBody = document.querySelector('#invoiceTable tbody');
+                tableBody.appendChild(lastDeletedRow);
+                lastDeletedRow = null;
+                document.getElementById('undoButton').style.display = 'none';
+                saveToLocalStorage();
             }
         }
 
-        // Soo celinta xogta markasta oo bogga la furo
-        window.onload = function() {
-            let savedData = localStorage.getItem('chartData');
-            if (savedData) {
-                myChart.data = JSON.parse(savedData); // Soo celinta xogta
-                myChart.update();
-            }
+        function searchTable() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const rows = document.querySelectorAll('#invoiceTable tbody tr');
+            
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const name = cells[1].textContent.toLowerCase();
+                const item = cells[2].textContent.toLowerCase();
+                if (name.includes(searchTerm) || item.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function printTable() {
+            window.print();
         }
     </script>
+
